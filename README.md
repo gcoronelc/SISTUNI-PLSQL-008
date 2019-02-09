@@ -20,6 +20,7 @@
 - Canal Youtube: https://bit.ly/2BWvikz
 - Facebook 1: https://www.facebook.com/groups/universidadjava/
 - Facebook 2: https://www.facebook.com/groups/desarrollasoftware/
+- Facebook 3: https://www.facebook.com/groups/bolsa.sistemas/
 - Correo: gcoronelc@gmail.com
 
 # LIBROS
