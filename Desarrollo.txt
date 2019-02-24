@@ -7,4 +7,4 @@ clase 01
 5.- Crear una base de datos
 6.- Herramientas de trabajo
 7.- Esquemas Ejemplo
-8.- 
+8.- Fundamentos del lenguaje
