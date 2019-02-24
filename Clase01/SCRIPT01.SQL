@@ -33,7 +33,7 @@ END;
 
 
 
--- FUNCION
+-- EJEMPLO 3: FUNCION
 
 CREATE OR REPLACE FUNCTION SCOTT.FN_SUMAR
 ( P_NUM1 IN NUMBER, P_NUM2 IN NUMBER )
@@ -49,6 +49,142 @@ END;
 
 
 SELECT SCOTT.FN_SUMAR(45,87) FROM DUAL;
+
+
+
+-- EJEMPLO 4: PROCEDIMIENTO
+
+CREATE OR REPLACE PROCEDURE SCOTT.PR_SUMAR
+(
+  P_NUM1 IN  NUMBER,
+  P_NUM2 IN  NUMBER,
+  P_SUMA OUT NUMBER
+)
+IS
+BEGIN
+  P_SUMA := P_NUM1 + P_NUM2;
+END;
+
+-- sqldbx
+
+BEGIN
+  SCOTT.PR_SUMAR (67, 34, :p_suma$NUMBER);
+END;
+
+
+-- otras herramientas
+
+DECLARE
+  V_NUM1 NUMBER;
+  V_NUM2 NUMBER;
+  V_SUMA NUMBER;
+BEGIN
+  -- DATOS
+  V_NUM1 := 54;
+  V_NUM2 := 65;
+  -- PROCESO
+  SCOTT.PR_SUMAR (V_NUM1, V_NUM2, V_SUMA);
+  -- REPORTE
+  DBMS_OUTPUT.PUT_LINE('SUMA: ' || V_SUMA );
+END;
+
+
+
+-- EJEMPLO 5
+-- Consultar el salario y comisión de un empleado
+-- Esquema: SCOTT
+
+
+CREATE OR REPLACE PROCEDURE PR_CON_EMP
+( 
+  P_CODIGO   IN  NUMBER,
+  P_SALARIO  OUT NUMBER,
+  P_COMISION OUT NUMBER,
+  P_MENSAJE  OUT VARCHAR2
+)
+IS
+  V_CONT  NUMBER(5);
+BEGIN
+  -- VALIDAR
+  SELECT COUNT(1) INTO V_CONT 
+  FROM   SCOTT.EMP 
+  WHERE  EMPNO = P_CODIGO;
+  
+  IF V_CONT <> 1 THEN
+    P_MENSAJE := 'NO EXISTE EL CODIGO';
+    RETURN;
+  END IF;
+  
+  -- PROCESO
+  SELECT SAL, NVL(COMM,0) 
+  INTO   P_SALARIO, P_COMISION
+  FROM   SCOTT.EMP 
+  WHERE  EMPNO = P_CODIGO;
+  
+  P_MENSAJE := 'OK';
+  
+END;
+/
+
+
+
+BEGIN
+  SCOTT.PR_CON_EMP (7369, :p_salario$NUMBER, :p_comision$NUMBER, :p_mensaje$VARCHAR2);
+END;
+
+
+
+
+-- EJEMPLO 6
+-- Consultar el salario y comisión de un empleado
+-- Esquema: SCOTT
+
+
+CREATE OR REPLACE PROCEDURE PR_CON_EMP2
+( 
+  P_CODIGO   IN  SCOTT.EMP.EMPNO%TYPE,
+  P_SALARIO  OUT SCOTT.EMP.SAL%TYPE,
+  P_COMISION OUT SCOTT.EMP.COMM%TYPE,
+  P_MENSAJE  OUT VARCHAR2
+)
+IS
+  V_CONT  NUMBER(5);
+BEGIN
+  -- VALIDAR
+  SELECT COUNT(1) INTO V_CONT 
+  FROM   SCOTT.EMP 
+  WHERE  EMPNO = P_CODIGO;
+  
+  IF V_CONT <> 1 THEN
+    P_MENSAJE := 'NO EXISTE EL CODIGO';
+    RETURN;
+  END IF;
+  
+  -- PROCESO
+  SELECT SAL, NVL(COMM,0) 
+  INTO   P_SALARIO, P_COMISION
+  FROM   SCOTT.EMP 
+  WHERE  EMPNO = P_CODIGO;
+  
+  P_MENSAJE := 'OK';
+  
+END;
+/
+
+
+
+BEGIN
+  SCOTT.PR_CON_EMP2 (7369, :p_salario$NUMBER, :p_comision$NUMBER, :p_mensaje$VARCHAR2);
+END;
+
+
+
+-- TAREA 01
+-- Desarrollar un procedimiento que permita
+-- consultar los ahorros en soles y dolares
+-- en una sucursal.
+
+
 
 
 
