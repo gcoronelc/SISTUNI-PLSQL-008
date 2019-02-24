@@ -1,0 +1,57 @@
+
+-- EJEMPLO 01
+
+SET SERVEROUTPUT ON
+
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('BIENVENIDOS AL MUNDO DE ORACLE PL/SQL');
+  DBMS_OUTPUT.PUT_LINE('MUCHOS SON LOS LLAMADOS, POCOS LOS ELEGIDOS');
+END;
+/
+
+SELECT * FROM VENTAS.PRODUCTO;
+
+
+-- EJEMPLO 02
+
+DECLARE
+  v_num1 NUMBER;
+  v_num2 NUMBER;
+  v_suma NUMBER;
+BEGIN
+  -- Datos
+  v_num1 := 45;
+  v_num2 := 87;
+  -- Proceso
+  v_suma := v_num1 + v_num2;
+  -- Reporte
+  dbms_output.PUT_LINE('Número 1: ' || v_num1);
+  dbms_output.PUT_LINE('Número 2: ' || v_num2);
+  dbms_output.PUT_LINE('Suma: ' || v_suma);
+END;
+/
+
+
+
+-- FUNCION
+
+CREATE OR REPLACE FUNCTION SCOTT.FN_SUMAR
+( P_NUM1 IN NUMBER, P_NUM2 IN NUMBER )
+RETURN NUMBER 
+IS
+  V_SUMA NUMBER;
+BEGIN
+  -- PROCESO
+  V_SUMA := P_NUM1 + P_NUM2;
+  -- RESULTADO
+  RETURN V_SUMA;
+END;
+
+
+SELECT SCOTT.FN_SUMAR(45,87) FROM DUAL;
+
+
+
+
+
+

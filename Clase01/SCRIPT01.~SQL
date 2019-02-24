@@ -1,0 +1,36 @@
+
+-- EJEMPLO 01
+
+SET SERVEROUTPUT ON
+
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('BIENVENIDOS AL MUNDO DE ORACLE PL/SQL');
+  DBMS_OUTPUT.PUT_LINE('MUCHOS SON LOS LLAMADOS, POCOS LOS ELEGIDOS');
+END;
+/
+
+SELECT * FROM VENTAS.PRODUCTO;
+
+
+-- EJEMPLO 02
+
+DECLARE
+  v_num1 NUMBER;
+  v_num2 NUMBER;
+  v_suma NUMBER;
+BEGIN
+  -- Datos
+  v_num1 := 45;
+  v_num2 := 87;
+  -- Proceso
+  v_suma := v_num1 + v_num2;
+  -- Reporte
+  dbms_output.PUT_LINE('Número 1: ' || v_num1);
+  dbms_output.PUT_LINE('Número 2: ' || v_num2);
+  dbms_output.PUT_LINE('Suma: ' || v_suma);
+END;
+/
+
+
+
+
