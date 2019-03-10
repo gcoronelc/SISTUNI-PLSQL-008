@@ -1,0 +1,29 @@
+CREATE OR REPLACE FUNCTION 
+scott.F_MAYOR_NUM( NUM1 NUMBER, NUM2 NUMBER, NUM3 NUMBER)
+RETURN NUMBER 
+IS
+    mayor NUMBER;
+BEGIN
+	mayor := -9999;
+	
+	IF(NUM1>mayor)THEN
+		mayor :=NUM1;
+	END IF;
+	
+	IF(NUM2>mayor)THEN
+		mayor :=NUM2;
+	END IF;
+	
+	IF(NUM3>mayor)THEN
+		mayor :=NUM3;
+	END IF;
+	
+	RETURN mayor;
+	
+END;
+
+
+SELECT scott.F_MAYOR_NUM(-10000,-20000,-50000) FROM DUAL;
+
+
+
