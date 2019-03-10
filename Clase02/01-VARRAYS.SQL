@@ -10,9 +10,11 @@ DECLARE
 	notas   NotasArray;
 BEGIN
 	-- Creando los arreglos
-	alumnos := AlumnosArray('Gustavo','Lucero','Ricardo','Andrea','Laura');
-	notas := NotasArray(20,18,16,10,15);
+	alumnos := AlumnosArray('Gustavo','Lucero','Ricardo','Andrea','Laura','Susana');
+	notas := NotasArray(20,18,16,10,15,20);
 	-- Mostrando los arreglos
+  dbms_output.PUT_LINE( 'Limite: ' || alumnos.LIMIT );
+  dbms_output.PUT_LINE( 'Current: ' || alumnos.COUNT );
 	FOR i IN 1 .. alumnos.count LOOP
 		dbms_output.PUT_LINE( alumnos(i) || ' - ' || notas(i) );
 	END LOOP;
