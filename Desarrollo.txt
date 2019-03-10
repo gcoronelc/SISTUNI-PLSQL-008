@@ -13,9 +13,9 @@ clase 01
 clase 01
 ========================================
 1.- Estructuras de Control
-2.- 
-3.- 
-4.- 
+2.- Estructura de datos: Registros y Colecciones
+3.- Sequencias
+4.- Tablas Temporales
 5.- 
 6.- 
 7.- 
