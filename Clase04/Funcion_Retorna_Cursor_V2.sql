@@ -2,19 +2,21 @@
 -- DEFINICION DEL PAQUETE
 -- =======================================================
 
-create or replace package scott.util is
+CREATE OR REPLACE PACKAGE SCOTT.UTIL2 IS
 
-  type gencur is ref cursor;
+  TYPE GENCUR IS REF CURSOR;
+  
+  REC_EMP SCOTT.EMP%ROWTYPE; 
 
-  function f_emp_x_dep( p_deptno number ) return gencur;
+  FUNCTION F_EMP_X_DEP( P_DEPTNO NUMBER ) RETURN GENCUR;
 
-end util;
+END UTIL2;
 /
 
 -- =======================================================
 -- IMPLEMENTACION DEL PAQUETE
 -- =======================================================
-CREATE OR REPLACE PACKAGE BODY SCOTT.UTIL AS
+CREATE OR REPLACE PACKAGE BODY SCOTT.UTIL2 AS
 
   FUNCTION F_EMP_X_DEP( P_DEPTNO NUMBER ) RETURN GENCUR
   IS
@@ -32,16 +34,16 @@ CREATE OR REPLACE PACKAGE BODY SCOTT.UTIL AS
     
   END;
 
-END UTIL;
+END UTIL2;
 /
 
 
 
 declare
-  v_cur util.gencur;
-  r     emp%rowtype;
+  v_cur util2.gencur;
+  r     scott.emp%rowtype;
 begin
-  v_cur := util.f_emp_x_dep(30);
+  v_cur := scott.util2.f_emp_x_dep(30);
   fetch v_cur into r;
   dbms_output.put_line( to_char(v_cur%rowcount) || ' ' || r.ename );
   close v_cur;
@@ -50,10 +52,10 @@ end;
 
 
 declare
-  v_cur util.gencur;
+  v_cur util2.gencur;
   r     emp%rowtype;
 begin
-  v_cur := util.f_emp_x_dep(30);
+  v_cur := util2.f_emp_x_dep(30);
   fetch v_cur into r;
   while v_cur%found loop
     dbms_output.put_line( to_char(v_cur%rowcount) || ' ' || r.ename );
@@ -62,6 +64,8 @@ begin
   close v_cur;
 end;
 /
+
+GRANT EXECUTE ON SCOTT.UTIL2 TO APPSCOTT;
 
 
 
