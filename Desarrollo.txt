@@ -24,6 +24,16 @@ clase 03
 2.- SQL en PL/SQL
 3.- Cursores
 4.- Paquetes
+5.- Transacciones
+
+clase 04
+========================================
+1.- Funcion que retorna cursor
+
+
+
+
+
 
 
 

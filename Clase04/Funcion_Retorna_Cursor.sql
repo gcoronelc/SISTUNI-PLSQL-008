@@ -5,6 +5,8 @@
 CREATE OR REPLACE PACKAGE SCOTT.UTIL IS
 
   TYPE GENCUR IS REF CURSOR;
+  
+  REC_EMP SCOTT.EMP%ROWTYPE;  
 
   FUNCTION F_EMP_X_DEP( V_DEPTNO NUMBER ) RETURN GENCUR;
 
@@ -38,10 +40,10 @@ END UTIL;
 
 
 declare
-  v_cur util.gencur;
+  v_cur scott.util.gencur;
   r     emp%rowtype;
 begin
-  v_cur := util.f_emp_x_dep(20);
+  v_cur := scott.util.f_emp_x_dep(20);
   fetch v_cur into r;
   dbms_output.put_line( to_char(v_cur%rowcount) || ' ' || r.ename );
   close v_cur;
@@ -49,18 +51,18 @@ end;
 /
 
 
-declare
-  v_cur util.gencur;
-  r     emp%rowtype;
-begin
-  v_cur := util.f_emp_x_dep(30);
-  fetch v_cur into r;
-  while v_cur%found loop
-    dbms_output.put_line( to_char(v_cur%rowcount) || ' ' || r.ename );
-    fetch v_cur into r;
-  end loop;
-  close v_cur;
-end;
+DECLARE
+  V_CUR SCOTT.UTIL.GENCUR;
+  R     SCOTT.EMP%ROWTYPE;
+BEGIN
+  v_cur := scott.util.f_emp_x_dep(20);
+  FETCH v_cur INTO R;
+  WHILE v_cur%found LOOP
+    dbms_output.put_line( to_char(v_cur%rowcount) || ' ' || R.ename );
+    FETCH v_cur INTO R;
+  END LOOP;
+  CLOSE v_cur;
+END;
 /
 
 
