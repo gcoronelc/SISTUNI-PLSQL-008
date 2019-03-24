@@ -29,6 +29,11 @@ clase 03
 clase 04
 ========================================
 1.- Funcion que retorna cursor
+2.- Funcion que retorna una tabla
+3.- Transacciones que procesan varias filas
+4.- Triggers
+
+
 
 
 
