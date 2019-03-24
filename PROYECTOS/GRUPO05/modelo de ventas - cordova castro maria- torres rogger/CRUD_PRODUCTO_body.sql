@@ -1,0 +1,75 @@
+create or replace PACKAGE BODY        CRUD_PRODUCTO AS
+
+PROCEDURE SP_INSERTAR_PROD(
+    P_NOMBRE IN VARCHAR2,
+    P_DESCRIPCION IN VARCHAR2,
+    P_PRECIO IN NUMBER,
+    P_MENSAJE OUT VARCHAR2,
+    R_RESULTADO out number) 
+as
+    P_IDPRODUCTO NUMBER;
+BEGIN
+   SELECT MAX(IDPRODUCTO)+1 INTO P_IDPRODUCTO FROM VENTAS.PRODUCTO;
+   INSERT INTO PRODUCTO(idproducto,nombre,descripcion,precio) VALUES(P_IDPRODUCTO,P_NOMBRE, P_DESCRIPCION, P_PRECIO)
+    RETURNING idproducto INTO R_RESULTADO;
+   if (R_RESULTADO>0) then 
+     P_MENSAJE:='Se registró correctamente el producto'; 
+     DBMS_OUTPUT.PUT_LINE(P_MENSAJE);
+   end if;
+  
+   
+   EXCEPTION
+      WHEN DUP_VAL_ON_INDEX THEN
+        R_RESULTADO := 0;
+      WHEN OTHERS THEN
+        R_RESULTADO := -1;
+   
+END;
+
+PROCEDURE SP_ELIMINAR_PROD(
+    P_IDPRODUCTO IN NUMBER,
+    P_MENSAJE OUT VARCHAR2)
+    AS
+        DET NUMBER;
+    BEGIN
+        SELECT COUNT(*) INTO DET FROM DETALLEVENTA WHERE IDPRODUCTO= P_IDPRODUCTO;
+        
+        IF(DET>1)then
+            P_MENSAJE:='No se puede eliminar porque existe un detalle de venta para este producto';
+        ELSE
+            DELETE FROM PRODUCTO WHERE IDPRODUCTO=P_IDPRODUCTO;
+            P_MENSAJE:='Se eliminó correctamente';
+        END IF;
+        
+END;  
+
+PROCEDURE SP_ACTUALIZAR_PROD
+     (P_IDPRODUCTO IN NUMBER,
+     P_NOMBRE IN VARCHAR2,
+     P_DESCRIPCION IN VARCHAR2,
+     P_PRECIO IN DECIMAL,
+     P_MENSAJE OUT VARCHAR2)
+    IS
+    BEGIN
+        UPDATE PRODUCTO 
+        SET NOMBRE = P_NOMBRE,
+        DESCRIPCION = P_DESCRIPCION,
+        PRECIO = P_PRECIO
+        WHERE IDPRODUCTO= P_IDPRODUCTO;
+        P_MENSAJE:='Los datos del producto:  ' ||P_IDPRODUCTO || ' se han actualizado correctamente' ;
+        
+    END;
+    
+     PROCEDURE SP_BUSCAR_PROD(
+        P_IDPRODUCTO IN NUMBER,
+        P_NOMBRE IN VARCHAR2,
+        VC_RESULTADO OUT SYS_REFCURSOR
+    )IS BEGIN 
+        OPEN VC_RESULTADO FOR
+        SELECT IDPRODUCTO, NOMBRE, DESCRIPCION, PRECIO FROM PRODUCTO 
+        WHERE IDPRODUCTO=p_idproducto 
+        OR NOMBRE = P_NOMBRE;
+    END;  
+ 
+
+END CRUD_PRODUCTO;

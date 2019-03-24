@@ -1,0 +1,86 @@
+-- =============================================
+-- CONECTARSE A LA APLICACIÓN
+-- =============================================
+CONNECT VENTAS/admin
+
+--select * from VENTAS.producto;
+insert into producto(idproducto,nombre,descripcion,precio) values(1,'Té Dharamsala','Bebidas',18);
+insert into producto(idproducto,nombre,descripcion,precio) values(2,'Cerveza tibetana Barley','Bebidas',19);
+insert into producto(idproducto,nombre,descripcion,precio) values(3,'Sirope de regaliz','Condimentos',10);
+insert into producto(idproducto,nombre,descripcion,precio) values(4,'Especias Cajun del chef Anton','Condimentos',22);
+insert into producto(idproducto,nombre,descripcion,precio) values(5,'Mezcla Gumbo del chef Anton','Condimentos',21.35);
+insert into producto(idproducto,nombre,descripcion,precio) values(6,'Mermelada de grosellas de la abuela','Condimentos',25);
+insert into producto(idproducto,nombre,descripcion,precio) values(7,'Peras secas orgánicas del tío Bob','Frutas/Verduras',30);
+insert into producto(idproducto,nombre,descripcion,precio) values(8,'Salsa de arándanos Northwoods','Condimentos',40);
+insert into producto(idproducto,nombre,descripcion,precio) values(9,'Buey Mishi Kobe','Carnes',97);
+insert into producto(idproducto,nombre,descripcion,precio) values(10,'Pez espada','Pescado/Marisco',31);
+insert into producto(idproducto,nombre,descripcion,precio) values(11,'Queso Cabrales','Lácteos',21);
+insert into producto(idproducto,nombre,descripcion,precio) values(12,'Queso Manchego La Pastora','Lácteos',38);
+insert into producto(idproducto,nombre,descripcion,precio) values(13,'Algas Konbu','Pescado/Marisco',6);
+insert into producto(idproducto,nombre,descripcion,precio) values(14,'Cuajada de judías','Frutas/Verduras',23.25);
+insert into producto(idproducto,nombre,descripcion,precio) values(15,'Salsa de soja baja en sodio','Condimentos',15.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(16,'Postre de merengue Pavlova','Repostería',17.45);
+insert into producto(idproducto,nombre,descripcion,precio) values(17,'Cordero Alice Springs','Carnes',39);
+insert into producto(idproducto,nombre,descripcion,precio) values(18,'Langostinos tigre Carnarvon','Pescado/Marisco',62.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(19,'Pastas de té de chocolate','Repostería',9.2);
+insert into producto(idproducto,nombre,descripcion,precio) values(20,'Mermelada de Sir Rodneys','Repostería',81);
+insert into producto(idproducto,nombre,descripcion,precio) values(21,'Bollos de Sir Rodneys','Repostería',10);
+insert into producto(idproducto,nombre,descripcion,precio) values(22,'Pan de centeno crujiente estilo Gustafs','Granos/Cereales',21);
+insert into producto(idproducto,nombre,descripcion,precio) values(23,'Pan fino','Granos/Cereales',9);
+insert into producto(idproducto,nombre,descripcion,precio) values(24,'Refresco Guaraná Fantástica','Bebidas',4.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(25,'Crema de chocolate y nueces NuNuCa','Repostería',14);
+insert into producto(idproducto,nombre,descripcion,precio) values(26,'Ositos de goma Gumbär','Repostería',31.23);
+insert into producto(idproducto,nombre,descripcion,precio) values(27,'Chocolate Schoggi','Repostería',43.9);
+insert into producto(idproducto,nombre,descripcion,precio) values(28,'Col fermentada Rössle','Frutas/Verduras',45.6);
+insert into producto(idproducto,nombre,descripcion,precio) values(29,'Salchicha Thüringer','Carnes',123.79);
+insert into producto(idproducto,nombre,descripcion,precio) values(30,'Arenque blanco del noroeste','Pescado/Marisco',25.89);
+insert into producto(idproducto,nombre,descripcion,precio) values(31,'Queso gorgonzola Telino','Lácteos',12.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(32,'Queso Mascarpone Fabioli','Lácteos',32);
+insert into producto(idproducto,nombre,descripcion,precio) values(33,'Queso de cabra','Lácteos',2.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(34,'Cerveza Sasquatch','Bebidas',14);
+insert into producto(idproducto,nombre,descripcion,precio) values(35,'Cerveza negra Steeleye','Bebidas',18);
+insert into producto(idproducto,nombre,descripcion,precio) values(36,'Escabeche de arenque','Pescado/Marisco',19);
+insert into producto(idproducto,nombre,descripcion,precio) values(37,'Salmón ahumado Gravad','Pescado/Marisco',26);
+insert into producto(idproducto,nombre,descripcion,precio) values(38,'Vino Côte de Blaye','Bebidas',263.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(39,'Licor verde Chartreuse','Bebidas',18);
+insert into producto(idproducto,nombre,descripcion,precio) values(40,'Carne de cangrejo de Boston','Pescado/Marisco',18.4);
+insert into producto(idproducto,nombre,descripcion,precio) values(41,'Crema de almejas estilo Nueva Inglaterra','Pescado/Marisco',9.65);
+insert into producto(idproducto,nombre,descripcion,precio) values(42,'Tallarines de Singapur','Granos/Cereales',14);
+insert into producto(idproducto,nombre,descripcion,precio) values(43,'Café de Malasia','Bebidas',46);
+insert into producto(idproducto,nombre,descripcion,precio) values(44,'Azúcar negra Malacca','Condimentos',19.45);
+insert into producto(idproducto,nombre,descripcion,precio) values(45,'Arenque ahumado','Pescado/Marisco',9.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(46,'Arenque salado','Pescado/Marisco',12);
+insert into producto(idproducto,nombre,descripcion,precio) values(47,'Galletas Zaanse','Repostería',9.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(48,'Chocolate holandés','Repostería',12.75);
+insert into producto(idproducto,nombre,descripcion,precio) values(49,'Regaliz','Repostería',20);
+insert into producto(idproducto,nombre,descripcion,precio) values(50,'Chocolate blanco','Repostería',16.25);
+insert into producto(idproducto,nombre,descripcion,precio) values(51,'Manzanas secas Manjimup','Frutas/Verduras',53);
+insert into producto(idproducto,nombre,descripcion,precio) values(52,'Cereales para Filo','Granos/Cereales',7);
+insert into producto(idproducto,nombre,descripcion,precio) values(53,'Empanada de carne','Carnes',32.8);
+insert into producto(idproducto,nombre,descripcion,precio) values(54,'Empanada de cerdo','Carnes',7.45);
+insert into producto(idproducto,nombre,descripcion,precio) values(55,'Paté chino','Carnes',24);
+insert into producto(idproducto,nombre,descripcion,precio) values(56,'Gnocchi de la abuela Alicia','Granos/Cereales',38);
+insert into producto(idproducto,nombre,descripcion,precio) values(57,'Raviolis Angelo','Granos/Cereales',19.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(58,'Caracoles de Borgoña','Pescado/Marisco',13.25);
+insert into producto(idproducto,nombre,descripcion,precio) values(59,'Raclet de queso Courdavault','Lácteos',55);
+insert into producto(idproducto,nombre,descripcion,precio) values(60,'Camembert Pierrot','Lácteos',34);
+insert into producto(idproducto,nombre,descripcion,precio) values(61,'Sirope de arce','Condimentos',28.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(62,'Tarta de azúcar','Repostería',49.3);
+insert into producto(idproducto,nombre,descripcion,precio) values(63,'Sandwich de vegetales','Condimentos',43.9);
+insert into producto(idproducto,nombre,descripcion,precio) values(64,'Bollos de pan de Wimmer','Granos/Cereales',33.25);
+insert into producto(idproducto,nombre,descripcion,precio) values(65,'Salsa de pimiento picante de Luisiana','Condimentos',21.05);
+insert into producto(idproducto,nombre,descripcion,precio) values(66,'Especias picantes de Luisiana','Condimentos',17);
+insert into producto(idproducto,nombre,descripcion,precio) values(67,'Cerveza Laughing Lumberjack','Bebidas',14);
+insert into producto(idproducto,nombre,descripcion,precio) values(68,'Barras de pan de Escocia','Repostería',12.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(69,'Queso Gudbrandsdals','Lácteos',36);
+insert into producto(idproducto,nombre,descripcion,precio) values(70,'Cerveza Outback','Bebidas',15);
+insert into producto(idproducto,nombre,descripcion,precio) values(71,'Crema de queso Fløtemys','Lácteos',21.5);
+insert into producto(idproducto,nombre,descripcion,precio) values(72,'Queso Mozzarella Giovanni','Lácteos',34.8);
+insert into producto(idproducto,nombre,descripcion,precio) values(73,'Caviar rojo','Pescado/Marisco',15);
+insert into producto(idproducto,nombre,descripcion,precio) values(74,'Queso de soja Longlife','Frutas/Verduras',10);
+insert into producto(idproducto,nombre,descripcion,precio) values(75,'Cerveza Klosterbier Rhönbräu','Bebidas',7.75);
+insert into producto(idproducto,nombre,descripcion,precio) values(76,'Licor Cloudberry','Bebidas',18);
+insert into producto(idproducto,nombre,descripcion,precio) values(77,'Salsa verde original Frankfurter','Condimentos',13);
+
+
+COMMIT;

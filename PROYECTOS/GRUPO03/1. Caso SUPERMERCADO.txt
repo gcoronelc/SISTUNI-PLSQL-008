@@ -1,0 +1,21 @@
+El supermercado "supermercados peruanos s.a." 
+
+Necesita modulos de atencion al cliente(ventas) para ello, se genera el siguiente caso en el que se formula: 
+
+- Modelamiento de tablas de base de datos.
+- Reconocer la entidad relacion entre ellos.
+- Crear procedimientos para sus mantenimiento.
+- Generar transacciones de ventas.
+
+Por ello se presenta el modelo de base de datos con las siguientes tablas y su descripcion: 
+
+Clientes 	-> persona o agente que realiza la comercializacion(comprador)
+Personal 	-> Persona o agente que realiza la comercializacion(vendedor)
+Cargos 		-> todos los cargos del personal en la empresa
+Productos 	-> todos los productos desagregados por categoria
+Distritos 	-> los distritos donde se encuentran los clientes y el personal
+Marcas 		-> marcas de los productos comercializados
+Categorias 	-> Categorias de los productos comercializados
+Formas de pago	-> Son las formas de pago de comercializacion(venta)
+Comp_Cabecera	-> Comprobante cabecera, se encuentra el cliente, fecha, forma de pago, etc.
+Comp_Detalle 	-> Se encuentran todos los productos comercializados desagregados por cliente y comp_cabecera

@@ -1,0 +1,31 @@
+-- Caso: Gesti�n de cobranza en un banco
+-- Curso: PLSQL Oracle 19-02
+-- Profesor: Ing. Eric Gustavo Coronel Castillo
+-- Integrantes: M�nica Huertas, Oscar Z��iga, Hern�n Cama
+
+-- ======================================================
+-- CONSULTA DE RESUMEN DE DATOS:
+-- Cuentas que no han cumplido con el pago de sus cuotas
+-- ======================================================
+
+SELECT A.ID_CUENTA, A.ID_CLIENTE, A.NRO_CUOTAS, 
+CASE WHEN B.CUOTAS_PAGADAS IS NULL THEN 0 ELSE B.CUOTAS_PAGADAS END CUOTAS_PAGADAS
+FROM 
+    (SELECT M.ID_CUENTA, N.ID_CLIENTE, 
+    MAX(M.NRO_CUOTA) NRO_CUOTAS  --CUOTAS A COBRAR 
+    FROM COBRANZA.CRONOGRAMA M 
+    INNER JOIN COBRANZA.CUENTA N ON M.ID_CUENTA = N.ID_CUENTA
+    WHERE 
+    M.FECHA_VENCIMIENTO < TO_DATE('20190317','YYYYMMDD') --FECHA DE GESTION DE COBRANZA
+    GROUP BY M.ID_CUENTA, N.ID_CLIENTE) A 
+    LEFT JOIN
+    (SELECT ID_CUENTA, COUNT(*) CUOTAS_PAGADAS  --PAGOS DE CUOTAS
+    FROM COBRANZA.PAGO
+    WHERE 
+    FECHA_PAGO < TO_DATE('20190317','YYYYMMDD') --FECHA DE GESTION DE COBRANZA
+    GROUP BY ID_CUENTA ) B 
+    ON A.ID_CUENTA = B.ID_CUENTA
+WHERE A.NRO_CUOTAS > CASE WHEN B.CUOTAS_PAGADAS IS NULL THEN 0 ELSE B.CUOTAS_PAGADAS END
+
+
+
