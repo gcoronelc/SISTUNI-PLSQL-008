@@ -1,0 +1,71 @@
+/*
+Ejemplo
+Desarrollar un procedimiento que permita registrar varios empleados 
+en la tabla SCOTT.EMP, y que su salario sea el promedio de su departamento.
+*/
+
+
+/*
+  CODIGO|NOMBRE|DPTO¬CODIGO|NOMBRE|DPTO¬CODIGO|NOMBRE|DPTO
+*/
+
+CREATE OR REPLACE PROCEDURE SCOTT.SP_INSERTA_EMPS
+( P_DATOS IN VARCHAR2 )
+AS
+  V_FILAS    SCOTT.PKG_EGCC_UTIL.T_ARRAY_STRING;
+  V_CAMPOS   SCOTT.PKG_EGCC_UTIL.T_ARRAY_STRING;
+  V_SAL_PROM NUMBER(7,2);
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('INICIO DEL PROCESO');
+  V_FILAS := SCOTT.PKG_EGCC_UTIL.SPLIT(P_DATOS,'¬');
+  FOR I in 1 .. V_FILAS.COUNT LOOP 
+    
+    V_CAMPOS := SCOTT.PKG_EGCC_UTIL.SPLIT(V_FILAS(I),'|');
+    
+    SELECT AVG(SAL) INTO V_SAL_PROM
+    FROM SCOTT.EMP WHERE DEPTNO = V_CAMPOS(3);
+    
+    INSERT INTO SCOTT.EMP(EMPNO, ENAME, DEPTNO, SAL, JOB )
+    VALUES(V_CAMPOS(1), V_CAMPOS(2), V_CAMPOS(3), V_SAL_PROM, '' );
+    
+    DBMS_OUTPUT.PUT_LINE(V_CAMPOS(1) || ' - ' || V_SAL_PROM);
+    
+  END LOOP;
+  
+  COMMIT;
+  DBMS_OUTPUT.PUT_LINE('PROCESO OK');
+  
+EXCEPTION
+
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE(SQLERRM);
+    ROLLBACK;
+
+END;
+
+
+SELECT * FROM SCOTT.DEPT;
+SELECT * FROM SCOTT.EMP;
+
+
+DECLARE
+  V_DATOS VARCHAR2(6000);
+BEGIN
+  V_DATOS := '1114|KARLA|30¬1115|LEONOR|30¬1116|DELIA|30';
+  SCOTT.SP_INSERTA_EMPS (V_DATOS);
+END;
+
+
+/*
+Tarea 
+
+Desarrollar un procedimiento almacnado que
+permita cagar empleados en la tabla
+RECURSOS.EMPLEADO, el salario debe ser el
+promedio entre el maximo y minimo segun su cargo.
+Aplicando cadenas y split.
+*/
+
+
+
+
